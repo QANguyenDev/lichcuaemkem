@@ -20,6 +20,11 @@ body{
   justify-content:center;
   align-items:center;
   overflow:hidden;
+
+  touch-action: none;        /* chặn pan/zoom */
+  overscroll-behavior: none; /* chặn bounce iOS */
+  position: fixed;           /* khóa body */
+  width:100%;
 }
 
 .scene{
@@ -40,7 +45,7 @@ body{
   height:280px;
   border-radius:18px;
   padding:10px;
-  color:#222;
+  color:#444;
   overflow:hidden;
   backface-visibility:hidden;
 
@@ -87,7 +92,7 @@ body{
 }
 
 .today{
-  background:#ff3b3b;
+  background:#ff9eb5;
   color:white;
   font-weight:bold;
 }
@@ -112,6 +117,7 @@ const radius = (monthWidth/2) / Math.tan(Math.PI/totalMonths);
 let currentRotation = 0;
 let autoRotateSpeed = -0.1; // phải → trái
 
+
 const monthNames = [
   "Tháng 1","Tháng 2","Tháng 3","Tháng 4",
   "Tháng 5","Tháng 6","Tháng 7","Tháng 8",
@@ -125,18 +131,18 @@ for(let month=0; month<12; month++){
   const monthDiv = document.createElement("div");
 
   const gradients = [
-  "linear-gradient(145deg,#ffecd2,#fcb69f)",
-  "linear-gradient(145deg,#a1c4fd,#c2e9fb)",
-  "linear-gradient(145deg,#fddb92,#d1fdff)",
-  "linear-gradient(145deg,#84fab0,#8fd3f4)",
-  "linear-gradient(145deg,#fccb90,#d57eeb)",
-  "linear-gradient(145deg,#e0c3fc,#8ec5fc)",
-  "linear-gradient(145deg,#f093fb,#f5576c)",
-  "linear-gradient(145deg,#4facfe,#00f2fe)",
-  "linear-gradient(145deg,#43e97b,#38f9d7)",
-  "linear-gradient(145deg,#fa709a,#fee140)",
-  "linear-gradient(145deg,#30cfd0,#330867)",
-  "linear-gradient(145deg,#5ee7df,#b490ca)"
+  "linear-gradient(145deg,#ffd6e0,#fff0f5)", // hồng phấn
+  "linear-gradient(145deg,#d6f5ff,#f0fbff)", // xanh baby
+  "linear-gradient(145deg,#fff5d6,#fffbe8)", // vàng kem
+  "linear-gradient(145deg,#e6d6ff,#f5f0ff)", // tím lavender
+  "linear-gradient(145deg,#d6ffe8,#f0fff7)", // xanh mint
+  "linear-gradient(145deg,#ffe4d6,#fff4f0)", // cam đào
+  "linear-gradient(145deg,#f7d6ff,#fdf0ff)", // tím hồng
+  "linear-gradient(145deg,#d6f0ff,#eefaff)", // xanh sương
+  "linear-gradient(145deg,#ffe8f0,#fff6fa)", // hồng baby
+  "linear-gradient(145deg,#e8ffd6,#f6fff0)", // xanh lá non
+  "linear-gradient(145deg,#fff0d6,#fff8ec)", // kem sữa
+  "linear-gradient(145deg,#f0d6ff,#f8f0ff)"  // tím nhạt
 ];
 
 monthDiv.style.background = gradients[month];
@@ -185,6 +191,7 @@ function animate(){
 }
 
 animate();
+
 </script>
 
 </body>
