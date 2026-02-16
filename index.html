@@ -281,8 +281,8 @@ const radius = (monthWidth/2) / Math.tan(Math.PI/totalMonths);
 
 let currentRotation = 0;
 let autoRotateSpeed = -0.1; // phải → trái
-let isUserInteracting = false;
-let idleTimer;
+// let isUserInteracting = false;
+// let idleTimer;
 
 const monthNames = [
   "Tháng 1","Tháng 2","Tháng 3","Tháng 4",
@@ -351,10 +351,7 @@ monthDiv.style.background = gradients[month];
 
 // ===== AUTO ROTATE =====
 function animate(){
-  if(!isUserInteracting){
-    currentRotation += autoRotateSpeed;
-  }
-
+  currentRotation += autoRotateSpeed;
   cylinder.style.transform = `rotateY(${currentRotation}deg)`;
   requestAnimationFrame(animate);
 }
@@ -362,27 +359,27 @@ function animate(){
 animate();
 
 // ===== TOUCH CONTROL =====
-let startX;
+// let startX;
 
-cylinder.addEventListener("touchstart", e=>{
-  isUserInteracting = true;
-  startX = e.touches[0].clientX;
-  clearTimeout(idleTimer);
-});
+// cylinder.addEventListener("touchstart", e=>{
+//   isUserInteracting = true;
+//   startX = e.touches[0].clientX;
+//   clearTimeout(idleTimer);
+// });
 
-cylinder.addEventListener("touchmove", e=>{
-  let moveX = e.touches[0].clientX;
-  let diff = moveX - startX;
+// cylinder.addEventListener("touchmove", e=>{
+//   let moveX = e.touches[0].clientX;
+//   let diff = moveX - startX;
 
-  currentRotation += diff * 0.15;
-  startX = moveX;
-});
+//   currentRotation += diff * 0.15;
+//   startX = moveX;
+// });
 
-cylinder.addEventListener("touchend", ()=>{
-  idleTimer = setTimeout(()=>{
-    isUserInteracting = false;
-  },3000);
-});
+// cylinder.addEventListener("touchend", ()=>{
+//   idleTimer = setTimeout(()=>{
+//     isUserInteracting = false;
+//   },3000);
+// });
 </script>
 
 </body>
